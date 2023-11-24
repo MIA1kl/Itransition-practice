@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+      <h1>User Management</h1>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th><input type="checkbox" id="selectAll"></th>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Last Login</th>
+              <th>Registration Time</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for user in users %}
+              <tr>
+                <td><input type="checkbox" class="select-user"></td>
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.last_login }}</td>
+                <td>{{ user.date_joined }}</td>
+                <td>{{ user.is_blocked|yesno:"Blocked,Active" }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col">
+      <div class="btn-toolbar" role="toolbar">
+        <button class="btn btn-danger">Block</button>
+        <button class="btn btn-success">Unblock</button>
+        <button class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
